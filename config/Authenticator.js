@@ -4,9 +4,12 @@ exports.Authencticate = async (req, res) => {
   const jwt =require("jsonwebtoken");
  
   try {
-    
+   // console.log("in atuhenticator")
+    console.log(req);
     let data=req[0].roleID;
-   const token= jwt.sign({data},jwtkey)
+    console.log(req);
+   const token= await jwt.sign({data},jwtkey,{ expiresIn: '1D' })
+   //console.log("singed token",token);
 return(token);
   } catch (error) {
     console.log(error);
